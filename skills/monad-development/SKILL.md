@@ -61,13 +61,11 @@ Docs: https://docs.monad.xyz
 ### Safe Contract Addresses (Monad Testnet)
 
 ```
-SafeL2 (v1.4.1):               0x29fcB43b46531BcA003ddC8FCB67FFE91900C762
+Safe (v1.4.1):                 0x41675C099F32341bf84BFc5382aF534df5C7461a
 SafeProxyFactory:              0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67
 CompatibilityFallbackHandler:  0xfd0732Dc9E303f09fCEf3a7388Ad10A83459Ec99
 CreateCall:                    0x9b35Af71d77eaf8d7e40252370304687390A1A52
 ```
-
-**Use SafeL2 (not Safe):** SafeL2 emits events which are required for Transaction Service API indexing. The regular Safe.sol skips events to save gas (for Ethereum mainnet), but Monad has low gas costs and needs events for proper Safe UI integration.
 
 Source of truth: https://docs.monad.xyz/developer-essentials/testnets. Testnet reset from genesis on December 16, 2025; re-pull canonical addresses if it resets again.
 All contracts verified. Chain ID: 10143. CREATE2 works perfectly on Monad (Prague EVM).
@@ -199,7 +197,7 @@ User can now:
 
 ## Safe Multisig Setup
 
-**Status:** SafeL2 v1.4.1 works perfectly on Monad with full CREATE2 support (as of Jan 26, 2026). We use SafeL2 (not Safe) for event emission support required by Transaction Service API.
+**Status:** Safe v1.4.1 works perfectly on Monad with full CREATE2 support (as of Jan 26, 2026).
 
 ### Security Model
 
@@ -307,7 +305,7 @@ interface ISafeProxyFactory {
 }
 
 contract DeploySafeCREATE2 is Script {
-    address constant SAFE_SINGLETON = 0x29fcB43b46531BcA003ddC8FCB67FFE91900C762; // SafeL2
+    address constant SAFE_SINGLETON = 0x41675C099F32341bf84BFc5382aF534df5C7461a;
     address constant SAFE_PROXY_FACTORY = 0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67;
     address constant FALLBACK_HANDLER = 0xfd0732Dc9E303f09fCEf3a7388Ad10A83459Ec99;
 
