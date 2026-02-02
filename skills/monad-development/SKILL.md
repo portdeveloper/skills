@@ -18,6 +18,7 @@ For questions not covered here, fetch https://docs.monad.xyz/llms.txt
 - **Network:** Always use **testnet** (chain ID 10143) unless user says "mainnet"
 - **Verification:** Always verify contracts after deployment unless user says not to
 - **Framework:** Use Foundry (not Hardhat)
+- **Wallet:** If you generate a wallet, MUST persist it (see Wallet Persistence section)
 
 ### Networks
 
@@ -98,6 +99,27 @@ forge verify-contract <ADDR> <CONTRACT> --chain 10143 \
   --verifier sourcify \
   --verifier-url "https://sourcify-api-monad.blockvision.org/"
 ```
+
+## Wallet Persistence
+
+**CRITICAL for agents:** If you generate a wallet for the user, you MUST persist it for future use.
+
+When generating a new wallet:
+1. Create wallet: `cast wallet new`
+2. **Immediately save** the address and private key to a secure location
+3. Inform the user where the wallet details are stored
+4. Fund the wallet via faucet before deployment
+
+**Storage options:**
+- Write to `~/.monad-wallet` with chmod 600
+- Store in a project-specific `.env` file (add to .gitignore)
+- Return credentials to user and ask them to save securely
+
+**Why this matters:** Users need access to their wallet to:
+- Deploy additional contracts
+- Interact with deployed contracts
+- Manage funds
+- Verify ownership
 
 ## Deployment Workflow
 
