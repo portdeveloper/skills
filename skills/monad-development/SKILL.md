@@ -92,6 +92,13 @@ ARGS_NO_PREFIX=${ARGS#0x}
 # Add to request: "constructorArgs": "$ARGS_NO_PREFIX"
 ```
 
+**Manual verification fallback (if API fails):**
+```bash
+forge verify-contract <ADDR> <CONTRACT> --chain 10143 \
+  --verifier sourcify \
+  --verifier-url "https://sourcify-api-monad.blockvision.org/"
+```
+
 ## Deployment Workflow
 
 Use `forge script` for deployments:
